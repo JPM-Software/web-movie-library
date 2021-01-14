@@ -48,7 +48,7 @@
     "import/first": "error",
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
-    "jsx-quotes": ["error", "prefer-single"],
+    "jsx-quotes": ["error", "prefer-double"],
     "key-spacing": ["error"],
     "keyword-spacing": ["error"],
     "no-multiple-empty-lines": ["error"],
@@ -59,7 +59,7 @@
     "semi": ["error", "always"],
     "semi-spacing": ["error"],
     "semi-style": ["error", "last"],
-    "quotes": ["error", "double", { "allowTemplateLiterals": true }],
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/jsx-uses-react": 2,
     "react/jsx-uses-vars": 2,
@@ -69,7 +69,8 @@
     "space-in-parens": ["error"],
     "space-infix-ops": ["error"],
     "no-var": ["error"],
-    "simple-import-sort/sort": [
+    "simple-import-sort/exports": "error",
+    "simple-import-sort/imports": [
       "error",
       {
         "groups": [
@@ -97,6 +98,6 @@
     "prefer-const": ["error"],
     "import/order": ["off"],
     "no-console": "error",
-    "prettier/prettier": "error"
+    "prettier/prettier": ["error", { "singleQuote": true }]
   }
 }
