@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "api/*": ["./api/*"],
+      "components/*": ["./components/*"],
+      "layout/*": ["./layout/*"],
+      "router/*": ["./router/*"],
+      "store/*": ["./store/*"],
+      "views/*": ["./views/*"],
+      "utils/*": ["./utils/*"]
+    },
+    "jsx": "react"
+  },
+  "include": ["src/**/*"]
+}
