@@ -1,11 +1,14 @@
+import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 import express from 'express';
+import logger from 'morgan';
 
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => {
-  res.send('The sedulous hyena ate the antelope!');
-});
+app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(logger('common'));
 
 app.listen(port, () => {
   //eslint-disable-next-line

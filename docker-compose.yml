@@ -1,0 +1,33 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:13.1-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    # volumes:
+    #   - ./postgresql/data:/var/lib/postgresql/data
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    volumes:
+      - ./server/src:/app/src
+    ports:
+      - "3001:3001"
+    depends_on:
+      - postgres
+    # environment:
+    #   NODE_ENV: production
+  # ui:
+  #   build:
+  #     context: ./ui
+  #     dockerfile: Dockerfile.dev
+  #   volumes:
+  #     - /app/node_modules
+  #     - ./ui:/app
+  #   ports:
+  #     - "8080:8080"
