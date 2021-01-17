@@ -1,3 +1,5 @@
+import pool from './db';
+
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import express from 'express';
@@ -13,4 +15,10 @@ app.use(logger('common'));
 app.listen(port, () => {
   //eslint-disable-next-line
   console.log(`server is listening on ${port}`);
+
+  pool.query('SELECT NOW()', (err, res) => {
+    //eslint-disable-next-line
+    console.log(err, res);
+    pool.end();
+  });
 });
