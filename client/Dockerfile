@@ -2,16 +2,14 @@ FROM node:14
 
 ENV NODE_ENV=production
 
-RUN mkdir -p /usr/src/server
+RUN mkdir -p /usr/src/client
 
-WORKDIR /usr/src/server
+WORKDIR /usr/src/client
 
 COPY ["package.json", "package-lock.json*", "./"]
 
 RUN npm install --production
 
-COPY . /usr/src/server
+COPY . /usr/src/client
 
-EXPOSE 3001
-
-CMD [ "npm", "start" ]
+CMD ["npm", "start"]

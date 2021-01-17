@@ -9,10 +9,6 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-    # networks:
-    #   - db
-    # volumes:
-    #   - ./postgresql/data:/var/lib/postgresql/data
   server:
     build:
       context: ./server
@@ -24,14 +20,12 @@ services:
       - "3001:3001"
     depends_on:
       - postgres
-    # environment:
-    #   NODE_ENV: production
-  # ui:
-  #   build:
-  #     context: ./ui
-  #     dockerfile: Dockerfile.dev
-  #   volumes:
-  #     - /app/node_modules
-  #     - ./ui:/app
-  #   ports:
-  #     - "8080:8080"
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    volumes:
+      - ./client/src:/app/src
+    ports:
+      - "8080:8080"
