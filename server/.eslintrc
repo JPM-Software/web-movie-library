@@ -53,6 +53,7 @@
     "space-infix-ops": ["error"],
     "no-var": ["error"],
     "simple-import-sort/exports": "error",
+    "no-unused-vars": "warn",
     "simple-import-sort/imports": [
       "error",
       {
@@ -78,7 +79,7 @@
     "sort-imports": "off",
     "prefer-const": ["error"],
     "import/order": ["off"],
-    "no-console": "error",
+    "no-console": "warn",
     "prettier/prettier": ["error", { "singleQuote": true }]
   }
 }

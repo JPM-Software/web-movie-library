@@ -97,7 +97,7 @@
     "sort-imports": "off",
     "prefer-const": ["error"],
     "import/order": ["off"],
-    "no-console": "error",
+    "no-console": "warn",
     "prettier/prettier": ["error", { "singleQuote": true }]
   }
 }

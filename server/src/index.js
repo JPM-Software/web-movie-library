@@ -1,4 +1,4 @@
-import pool from './db';
+import { initializeDatabase } from './db';
 
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
@@ -16,9 +16,5 @@ app.listen(port, () => {
   //eslint-disable-next-line
   console.log(`server is listening on ${port}`);
 
-  pool.query('SELECT NOW()', (err, res) => {
-    //eslint-disable-next-line
-    console.log(err, res);
-    pool.end();
-  });
+  initializeDatabase();
 });
