@@ -1,4 +1,5 @@
 import { initializeDatabase } from './db';
+import MainRouter from './routes';
 
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
@@ -18,3 +19,5 @@ app.listen(port, () => {
 
   initializeDatabase();
 });
+
+app.use('/', MainRouter);
