@@ -1,15 +1,17 @@
 {
   "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
     "baseUrl": "./src",
     "paths": {
-      "api/*": ["./api/*"],
-      "components/*": ["./components/*"],
-      "layout/*": ["./layout/*"],
-      "router/*": ["./router/*"],
-      "store/*": ["./store/*"],
-      "views/*": ["./views/*"],
-      "utils/*": ["./utils/*"]
+      "*": ["./*"],
+      "@/*": ["./*"],
+      "~/*": ["./*"],
+      "routes/*": ["./routes/*"],
+      "db/*": ["./db/*"],
+      "controllers/*": ["./controllers/*"],
     },
   },
-  "include": ["src/**/*"]
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "**/node_modules/*"]
 }

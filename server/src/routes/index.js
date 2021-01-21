@@ -1,9 +1,12 @@
+import authRouter from './auth';
+
 import { Router } from 'express';
 
-const MainRouter = Router();
+const mainRouter = Router();
+const apiRouter = Router();
 
-MainRouter.use(() => {
-  console.log('Simply router');
-});
+apiRouter.use('/auth', authRouter);
 
-export default MainRouter;
+mainRouter.use('/api', apiRouter);
+
+export default mainRouter;

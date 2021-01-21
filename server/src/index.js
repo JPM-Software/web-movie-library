@@ -13,11 +13,11 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(logger('common'));
 
+app.use('/', MainRouter);
+
 app.listen(port, () => {
   //eslint-disable-next-line
-  console.log(`server is listening on ${port}`);
+  console.log(`Server is listening on ${port}`);
 
   initializeDatabase();
 });
-
-app.use('/', MainRouter);

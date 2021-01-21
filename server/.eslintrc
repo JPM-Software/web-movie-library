@@ -7,7 +7,12 @@
     "mocha": true
   },
   "parser": "babel-eslint",
-  "extends": ["eslint:recommended", "plugin:import/errors", "plugin:import/warnings", "plugin:prettier/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:prettier/recommended"
+  ],
   "parserOptions": {
     "ecmaVersion": 7,
     "ecmaFeatures": {
@@ -53,7 +58,6 @@
     "space-infix-ops": ["error"],
     "no-var": ["error"],
     "simple-import-sort/exports": "error",
-    "no-unused-vars": "warn",
     "simple-import-sort/imports": [
       "error",
       {
@@ -70,9 +74,7 @@
           // Parent imports. Put `..` last.
           ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
           // Other relative imports. Put same-folder imports and `.` last.
-          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
-          // Style imports.
-          ["^.+\\.s?css$"]
+          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"]
         ]
       }
     ],
@@ -80,6 +82,7 @@
     "prefer-const": ["error"],
     "import/order": ["off"],
     "no-console": "warn",
-    "prettier/prettier": ["error", { "singleQuote": true }]
+    "prettier/prettier": ["error", { "singleQuote": true }],
+    "no-unused-vars": "warn"
   }
 }
