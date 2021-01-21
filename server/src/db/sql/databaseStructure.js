@@ -58,17 +58,15 @@ CREATE TABLE IF NOT EXISTS library.opus_type (
 );
 ALTER TABLE library.opus_type ADD CONSTRAINT opus_type_id PRIMARY KEY (id);
 
-DROP TABLE IF EXISTS library.order_history CASCADE;
-CREATE TABLE IF NOT EXISTS library.order_history (
+DROP TABLE IF EXISTS library.user_rating CASCADE;
+CREATE TABLE IF NOT EXISTS library.user_rating (
   id SERIAL NOT NULL,
   user_id INTEGER NOT NULL,
   opus_id INTEGER NOT NULL,
-  hire_date DATE,
-  return_date DATE,
   FOREIGN KEY (user_id) REFERENCES library.user(id) ON DELETE CASCADE,
   FOREIGN KEY (opus_id) REFERENCES library.opus(id) ON DELETE CASCADE
 );
-ALTER TABLE library.order_history ADD CONSTRAINT order_history_id PRIMARY KEY (id);
+ALTER TABLE library.user_rating ADD CONSTRAINT user_rating_id PRIMARY KEY (id);
 
 DROP TABLE IF EXISTS library.carrier CASCADE;
 CREATE TABLE IF NOT EXISTS library.carrier (
@@ -76,17 +74,6 @@ CREATE TABLE IF NOT EXISTS library.carrier (
   type VARCHAR(255) NOT NULL
 );
 ALTER TABLE library.carrier ADD CONSTRAINT carrier_id PRIMARY KEY (id);
-
-DROP TABLE IF EXISTS library.warehouse CASCADE;
-CREATE TABLE IF NOT EXISTS library.warehouse (
-  id SERIAL NOT NULL,
-  opus_id INTEGER NOT NULL,
-  carrier_id INTEGER NOT NULL,
-  is_available boolean NOT NULL,
-  FOREIGN KEY (opus_id) REFERENCES library.opus(id) ON DELETE CASCADE,
-  FOREIGN KEY (carrier_id) REFERENCES library.carrier(id) ON DELETE CASCADE
-);
-ALTER TABLE library.warehouse ADD CONSTRAINT warehouse_id PRIMARY KEY (id);
 
 DROP TABLE IF EXISTS library.cast CASCADE;
 CREATE TABLE IF NOT EXISTS library.cast (
@@ -97,16 +84,6 @@ CREATE TABLE IF NOT EXISTS library.cast (
   FOREIGN KEY (opus_id) REFERENCES library.opus(id) ON DELETE CASCADE
 );
 ALTER TABLE library.cast ADD CONSTRAINT cast_id PRIMARY KEY (id);
-
-DROP TABLE IF EXISTS library.reservation CASCADE;
-CREATE TABLE IF NOT EXISTS library.reservation (
-  id SERIAL NOT NULL,
-  user_id INTEGER NOT NULL,
-  opus_id INTEGER NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES library.user(id) ON DELETE CASCADE,
-  FOREIGN KEY (opus_id) REFERENCES library.opus(id) ON DELETE CASCADE
-);
-ALTER TABLE library.reservation ADD CONSTRAINT reservation_id PRIMARY KEY (id);
 
 DROP TABLE IF EXISTS library.role CASCADE;
 CREATE TABLE IF NOT EXISTS library.role (

@@ -15,6 +15,8 @@ const DBPool = new Pool({
 
 export default DBPool;
 
+export const query = async (text, params) => await DBPool.query(text, params);
+
 export const initializeDatabase = async () => {
   let client = null;
   try {

@@ -11,7 +11,7 @@ const port = 3000;
 
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(logger('common'));
+app.use(logger('dev'));
 
 app.use('/', MainRouter);
 
