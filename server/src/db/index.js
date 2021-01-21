@@ -1,3 +1,4 @@
+import addInitialData from './sql/addInitialData';
 import databaseStructure from './sql/databaseStructure';
 
 import { Pool } from 'pg';
@@ -14,36 +15,36 @@ const DBPool = new Pool({
 
 export default DBPool;
 
-export function initializeDatabase() {
-  return DBPool.connect((err, client, done) => {
-    const shouldAbort = err => {
-      if (err) {
-        // eslint-disable-next-line
-        console.error('Error in transaction', err.stack);
-        client.query('ROLLBACK', err => {
-          if (err) {
-            // eslint-disable-next-line
-            console.error('Error rolling back client', err.stack);
-          }
-          done();
-        });
-      }
-      return !!err;
-    };
+export const initializeDatabase = async () => {
+  let client = null;
+  try {
+    client = await DBPool.connect();
+  } catch (error) {
+    // eslint-disable-next-line
+    console.log('A client pool error occurred:', error);
+    return error;
+  }
 
-    client.query('BEGIN', err => {
-      if (shouldAbort(err)) return;
-
-      client.query(databaseStructure, (err, res) => {
-        if (shouldAbort(err)) return;
-        client.query('COMMIT', err => {
-          if (err) {
-            // eslint-disable-next-line
-            console.error('Error committing transaction', err.stack);
-          }
-          done();
-        });
-      });
-    });
-  });
-}
+  try {
+    // eslint-disable-next-line
+    console.log('Initializing database...');
+    await client.query('BEGIN');
+    await client.query(databaseStructure);
+    await client.query(addInitialData);
+    await client.query('COMMIT');
+  } catch (error) {
+    try {
+      await client.query('ROLLBACK');
+    } catch (rollbackError) {
+      // eslint-disable-next-line
+      console.log('A rollback error occurred:', rollbackError);
+    }
+    // eslint-disable-next-line
+    console.log('An error occurred:', error);
+    return error;
+  } finally {
+    // eslint-disable-next-line
+    console.log('Initialized databse successfuly!');
+    client.release();
+  }
+};
