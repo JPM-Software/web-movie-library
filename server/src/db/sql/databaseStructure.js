@@ -13,11 +13,11 @@ CREATE TABLE IF NOT EXISTS library.user (
   last_name VARCHAR(255) NOT NULL,
   login VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  birth_date DATE NOT NULL,
+  birth_date DATE,
   pesel BIGINT,
-  city VARCHAR(255) NOT NULL,
+  city VARCHAR(255) ,
   street VARCHAR(255),
-  house_number INTEGER NOT NULL
+  house_number INTEGER
 );
 ALTER TABLE library.user ADD CONSTRAINT user_id PRIMARY KEY (id);
 
@@ -27,7 +27,8 @@ CREATE TABLE IF NOT EXISTS library.movie (
   title VARCHAR(255) NOT NULL,
   year_of_production VARCHAR(255) NOT NULL,
   director VARCHAR(255) NOT NULL,
-  country VARCHAR(255) NOT NULL
+  country VARCHAR(255) NOT NULL,
+  thumbnail VARCHAR(255) NOT NULL
 );
 ALTER TABLE library.movie ADD CONSTRAINT movie_id PRIMARY KEY (id);
 
