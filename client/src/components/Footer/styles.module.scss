@@ -1,0 +1,16 @@
+@import '../../styles/variables';
+
+.footer {
+  background-color: $secondary-color;
+  box-shadow: $box-shadow-primary;
+}
+
+.footerContent {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 12px 0;
+  font-family: $title-font;
+  font-weight: 500;
+  color: $accent-color;
+}
