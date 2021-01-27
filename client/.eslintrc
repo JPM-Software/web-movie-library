@@ -1,22 +1,20 @@
 {
   "env": {
     "browser": true,
-    "commonjs": true,
-    "es6": true,
-    "node": true,
-    "mocha": true
+    "es2020": true,
+    "node": true
   },
   "parser": "babel-eslint",
   "extends": [
-    "eslint:recommended",
+    "react-app",
+    "plugin:prettier/recommended",
     "plugin:react/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:prettier/recommended",
     "plugin:jsx-a11y/recommended"
   ],
   "parserOptions": {
-    "ecmaVersion": 7,
+    "ecmaVersion": 2020,
     "ecmaFeatures": {
       "classes": true,
       "experimentalObjectRestSpread": true,
@@ -24,7 +22,7 @@
     },
     "sourceType": "module"
   },
-  "plugins": ["react", "jsx-a11y", "prettier", "simple-import-sort"],
+  "plugins": ["react", "jsx-a11y", "prettier", "simple-import-sort", "react-hooks"],
   "settings": {
     "react": {
       "version": "16.13"
@@ -40,7 +38,16 @@
     "array-bracket-spacing": ["error", "never"],
     "block-spacing": ["error", "always"],
     "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
-    "comma-dangle": ["error", "always-multiline"],
+    "comma-dangle": [
+      1,
+      {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "always-multiline"
+      }
+    ],
     "comma-spacing": ["error", { "before": false, "after": true }],
     "comma-style": ["error", "last"],
     "eol-last": ["error", "always"],
