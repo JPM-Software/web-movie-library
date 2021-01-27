@@ -59,7 +59,6 @@ export const signInUser = (login, password) => async dispatch => {
   try {
     dispatch(loginStart());
     const response = await loginUser(login, password);
-    console.log('🚀 ~ file: user.js ~ line 62 ~ response', response);
     if (response.status === 200) {
       dispatch(loginSuccess());
       localStorage.setItem('accessToken', response.data.accessToken);
