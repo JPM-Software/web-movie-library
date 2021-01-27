@@ -1,23 +1,29 @@
 import React from 'react';
+import { hot } from 'react-hot-loader/root';
+import { Provider } from 'react-redux';
+import axios from 'axios';
 
-import logo from './logo.svg';
+import { forceLogout } from './store/user';
+import Router from './router';
+import store from './store';
 
-import './App.css';
+import './App.scss';
 
-function App() {
+axios.interceptors.response.use(undefined, error => {
+  const response = error.response;
+  if (!response.config.url?.includes('auth') && response.status === 401) {
+    store.dispatch(forceLogout());
+  }
+});
+
+export const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
+      <Provider store={store}>
+        <Router />
+      </Provider>
     </div>
   );
-}
+};
 
-export default App;
+export default hot(App);
