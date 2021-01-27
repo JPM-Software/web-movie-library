@@ -80,6 +80,8 @@ async function registerUser(request, response) {
   );
 
   const { first_name, last_name, login, password, birth_date, pesel, city, street, house_number } = request.body;
+  const passwordHash = bcrypt.hashSync(password, 10);
+
   if (userExist) {
     response.status(303);
     response.send('User already exist.');
@@ -87,7 +89,7 @@ async function registerUser(request, response) {
     await query(
       `INSERT INTO library.user(first_name, last_name, login, password, birth_date, pesel, city, street, house_number)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
-      [first_name, last_name, login, password, birth_date, pesel, city, street, house_number]
+      [first_name, last_name, login, passwordHash, birth_date, pesel, city, street, house_number]
     ).then(async () => {
       const userId = await query(`SELECT id FROM library.user WHERE login = $1`, [login]).then(res => res.rows[0]);
 

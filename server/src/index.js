@@ -7,7 +7,7 @@ import express from 'express';
 import logger from 'morgan';
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
 app.use(cookieParser());
 app.use(bodyParser.json());
