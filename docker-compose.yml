@@ -28,4 +28,4 @@ services:
     volumes:
       - ./client/src:/app/src
     ports:
-      - "3000:8080"
+      - "3000:3000"
