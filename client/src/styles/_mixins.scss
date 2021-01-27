@@ -1,0 +1,36 @@
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin background-norepeat-center($bgUrl) {
+  background-image: url('../assets/#{$bgUrl}');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@mixin font-size-10 {
+  font-size: 10px;
+  line-height: 12px;
+}
+
+@mixin font-size-12 {
+  font-size: 12px;
+  line-height: 15px;
+}
+
+@mixin font-size-14 {
+  font-size: 14px;
+  line-height: 17px;
+}
+
+@mixin font-size-16 {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+@mixin font-size-24 {
+  font-size: 24px;
+  line-height: 28px;
+}
