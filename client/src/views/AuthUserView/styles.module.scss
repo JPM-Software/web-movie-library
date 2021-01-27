@@ -1,0 +1,17 @@
+@import '../../styles/variables';
+
+.sectionAuthView {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+
+  .contentWrapper {
+    background-color: $secondary-color;
+    padding: 32px;
+    border-radius: 4px;
+    border: 1px solid $primary-light-color;
+    box-shadow: $box-shadow-primary;
+  }
+}
