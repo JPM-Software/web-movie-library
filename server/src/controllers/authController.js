@@ -61,7 +61,9 @@ async function loginUser(request, response) {
       return response.status(403).send('User does not exist or password is wrong.');
     } else {
       const { user } = auth;
-      const accessToken = jwt.sign({ username: user.login, role: user.role }, accessTokenSecret, { expiresIn: '20m' });
+      const accessToken = jwt.sign({ login: user.login, role: user.role, id: user.id }, accessTokenSecret, {
+        expiresIn: '20m',
+      });
 
       response.json({ accessToken: accessToken, message: 'User authorized correctly.' });
       response.status(200);
@@ -86,10 +88,10 @@ async function registerUser(request, response) {
       `INSERT INTO library.user(first_name, last_name, login, password, birth_date, pesel, city, street, house_number)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
       [first_name, last_name, login, password, birth_date, pesel, city, street, house_number]
-    ).then(async res => {
+    ).then(async () => {
       const userId = await query(`SELECT id FROM library.user WHERE login = $1`, [login]).then(res => res.rows[0]);
 
-      await query(`INSERT INTO library.user_permission(user_id, role_id) VALUES ($1, 2)`, [userId.id]).then(res => {
+      await query(`INSERT INTO library.user_permission(user_id, role_id) VALUES ($1, 2)`, [userId.id]).then(() => {
         response.status(201);
         response.send('User created successfully.');
       });
