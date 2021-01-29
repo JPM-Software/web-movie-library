@@ -1,0 +1,45 @@
+@import './styles/_variables';
+@import './styles/_fonts';
+@import './styles/_mixins';
+
+html,
+body,
+#root,
+.App {
+  min-height: 100%;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  letter-spacing: 0;
+}
+
+.App {
+  background: $main-bg;
+  color: $font-color;
+  @include font-size-14;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  overflow-y: auto;
+}
+
+* {
+  font-family: $main-font;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  color: $medium-gray;
+}
+
+.contentContainer {
+  margin: auto;
+  padding: 0 35px;
+}

@@ -1,0 +1,39 @@
+{
+  "name": "server",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx nodemon --exec npm run start:dev",
+    "start:dev": "npm run lint && babel-node --presets=@babel/preset-env ./src/index.js",
+    "lint": "eslint ./src/",
+    "build": "build"
+  },
+  "author": "Piotr Niemczyk",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7",
+    "pg": "^8.5.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "eslint": "^7.17.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "prettier": "^2.2.1"
+  }
+}

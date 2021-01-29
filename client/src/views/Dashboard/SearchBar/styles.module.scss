@@ -1,0 +1,21 @@
+@import '../../../styles/variables';
+
+.searchBarSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 24px 0 48px 0;
+
+  > input {
+    border: none;
+    height: 48px;
+    border-radius: 4px;
+    box-shadow: $box-shadow-primary;
+    min-width: 500px;
+    max-width: 700px;
+    padding: 0 24px;
+    outline: none;
+    font-size: 20px;
+    width: 80%;
+  }
+}
